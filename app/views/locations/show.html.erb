@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Display name:</strong>
+  <%= @location.display_name %>
+</p>
+
+<p>
+  <strong>Location name:</strong>
+  <%= @location.location_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @location.description %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @location.address %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @location.zip %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @location.image %>
+</p>
+
+<p>
+  <strong>Truck:</strong>
+  <%= @location.truck %>
+</p>
+
+<p>
+  <strong>Menu:</strong>
+  <%= @location.menu %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @location.order %>
+</p>
+
+<%= link_to 'Edit', edit_location_path(@location) %> |
+<%= link_to 'Back', locations_path %>
