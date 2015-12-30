@@ -1,35 +1,42 @@
-<h1>Listing businesses</h1>
-
-<table>
+<%- model_class = Business -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Business %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Phone number</th>
-      <th>Address</th>
-      <th>Zip</th>
-      <th>User</th>
-      <th>Order</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:phone_number) %></th>
+      <th><%= model_class.human_attribute_name(:address) %></th>
+      <th><%= model_class.human_attribute_name(:zip) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @businesses.each do |business| %>
       <tr>
+        <td><%= business.id %></td>
         <td><%= business.name %></td>
         <td><%= business.phone_number %></td>
         <td><%= business.address %></td>
         <td><%= business.zip %></td>
-        <td><%= business.user %></td>
-        <td><%= business.order %></td>
-        <td><%= link_to 'Show', business %></td>
-        <td><%= link_to 'Edit', edit_business_path(business) %></td>
-        <td><%= link_to 'Destroy', business, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l business.created_at, format: :long %></td>
+        <td>
+          <%= link_to business_path(business), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to business_path(business), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Business', new_business_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_business_path,
+            :class => 'btn btn-primary' %>

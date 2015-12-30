@@ -1,34 +1,30 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Business -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Business %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @business.name %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
+      <dd><pre class="prettyprint"><%= @business.name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:phone_number) %></dt>
+      <dd><pre class="prettyprint"><%= @business.phone_number %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:address) %></dt>
+      <dd><pre class="prettyprint"><%= @business.address %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:zip) %></dt>
+      <dd><pre class="prettyprint"><%= @business.zip %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Phone number:</strong>
-  <%= @business.phone_number %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              businesses_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_business_path(@business), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              business_path(@business),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @business.address %>
-</p>
-
-<p>
-  <strong>Zip:</strong>
-  <%= @business.zip %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @business.user %>
-</p>
-
-<p>
-  <strong>Order:</strong>
-  <%= @business.order %>
-</p>
-
-<%= link_to 'Edit', edit_business_path(@business) %> |
-<%= link_to 'Back', businesses_path %>
