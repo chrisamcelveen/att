@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @modifier.name %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @modifier.image %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @modifier.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @modifier.price %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @modifier.item %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @modifier.order %>
+</p>
+
+<%= link_to 'Edit', edit_modifier_path(@modifier) %> |
+<%= link_to 'Back', modifiers_path %>
