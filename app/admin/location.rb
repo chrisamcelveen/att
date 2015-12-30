@@ -1,4 +1,5 @@
 ActiveAdmin.register Location do
+  permit_params :display_name, :location_name, :description, :address, :zip, :image, :truck
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
