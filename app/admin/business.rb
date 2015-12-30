@@ -1,4 +1,5 @@
 ActiveAdmin.register Business do
+  permit_params :name, :phone_number, :address, :zip
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
