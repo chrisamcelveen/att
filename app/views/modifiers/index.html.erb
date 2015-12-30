@@ -1,35 +1,42 @@
-<h1>Listing modifiers</h1>
-
-<table>
+<%- model_class = Modifier -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Modifier %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Image</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Item</th>
-      <th>Order</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:image) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:price) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @modifiers.each do |modifier| %>
       <tr>
+        <td><%= modifier.id %></td>
         <td><%= modifier.name %></td>
         <td><%= modifier.image %></td>
         <td><%= modifier.description %></td>
         <td><%= modifier.price %></td>
-        <td><%= modifier.item %></td>
-        <td><%= modifier.order %></td>
-        <td><%= link_to 'Show', modifier %></td>
-        <td><%= link_to 'Edit', edit_modifier_path(modifier) %></td>
-        <td><%= link_to 'Destroy', modifier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l modifier.created_at, format: :long %></td>
+        <td>
+          <%= link_to modifier_path(modifier), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to modifier_path(modifier), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Modifier', new_modifier_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_modifier_path,
+            :class => 'btn btn-primary' %>

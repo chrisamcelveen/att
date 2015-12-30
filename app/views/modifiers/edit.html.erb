@@ -1,6 +1,5 @@
-<h1>Editing modifier</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @modifier %> |
-<%= link_to 'Back', modifiers_path %>
+<%- model_class = Modifier -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Modifier %></h1>
+</div>
+<%= render :partial => 'form' %>

@@ -1,34 +1,30 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Modifier -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Modifier %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @modifier.name %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
+      <dd><pre class="prettyprint"><%= @modifier.name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:image) %></dt>
+      <dd><pre class="prettyprint"><%= @modifier.image %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:description) %></dt>
+      <dd><pre class="prettyprint"><%= @modifier.description %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:price) %></dt>
+      <dd><pre class="prettyprint"><%= @modifier.price %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Image:</strong>
-  <%= @modifier.image %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              modifiers_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_modifier_path(@modifier), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              modifier_path(@modifier),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @modifier.description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @modifier.price %>
-</p>
-
-<p>
-  <strong>Item:</strong>
-  <%= @modifier.item %>
-</p>
-
-<p>
-  <strong>Order:</strong>
-  <%= @modifier.order %>
-</p>
-
-<%= link_to 'Edit', edit_modifier_path(@modifier) %> |
-<%= link_to 'Back', modifiers_path %>
